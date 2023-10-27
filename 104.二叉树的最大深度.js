@@ -19,11 +19,10 @@
  */
 var maxDepth = function (root) {
     let num = 1
-
     return traverser(root,num)
 };
 function traverser(root, number) {
-    let leftNumber, rightNumber
+    let leftNumber = 0, rightNumber = 0
     if(root == null) return 0
     if (root.left === null && root.right === null)
         return number
