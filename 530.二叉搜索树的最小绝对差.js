@@ -40,7 +40,25 @@
 // };
 //最小差值，左右两棵树后面的值-前面树的最大值
 
-var getMinimumDifference = function (root) {
-    
+var getMinimumDifference = function(root) {
+    let prev = null;
+    let res = Number.MAX_SAFE_INTEGER;
+
+    // 遍历函数
+    function traverse(root) {
+        if (root == null) {
+            return;
+        }
+        traverse(root.left);
+        // 中序遍历位置
+        if (prev != null) {
+            res = Math.min(res, root.val - prev.val);
+        }
+        prev = root;
+        traverse(root.right);
+    }
+
+    traverse(root);
+    return res;
 }
 // @lc code=end
